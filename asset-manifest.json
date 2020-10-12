@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/MattKirbyGIT/Simple-React-UI.git/static/css/main.5f361e03.chunk.css",
-    "main.js": "/MattKirbyGIT/Simple-React-UI.git/static/js/main.1f2769d0.chunk.js",
-    "main.js.map": "/MattKirbyGIT/Simple-React-UI.git/static/js/main.1f2769d0.chunk.js.map",
-    "runtime-main.js": "/MattKirbyGIT/Simple-React-UI.git/static/js/runtime-main.cd6e15da.js",
-    "runtime-main.js.map": "/MattKirbyGIT/Simple-React-UI.git/static/js/runtime-main.cd6e15da.js.map",
-    "static/js/2.20d83c76.chunk.js": "/MattKirbyGIT/Simple-React-UI.git/static/js/2.20d83c76.chunk.js",
-    "static/js/2.20d83c76.chunk.js.map": "/MattKirbyGIT/Simple-React-UI.git/static/js/2.20d83c76.chunk.js.map",
-    "index.html": "/MattKirbyGIT/Simple-React-UI.git/index.html",
-    "precache-manifest.c5b4b5b6be49728cb25fcc554f3a9859.js": "/MattKirbyGIT/Simple-React-UI.git/precache-manifest.c5b4b5b6be49728cb25fcc554f3a9859.js",
-    "service-worker.js": "/MattKirbyGIT/Simple-React-UI.git/service-worker.js",
-    "static/css/main.5f361e03.chunk.css.map": "/MattKirbyGIT/Simple-React-UI.git/static/css/main.5f361e03.chunk.css.map",
-    "static/js/2.20d83c76.chunk.js.LICENSE.txt": "/MattKirbyGIT/Simple-React-UI.git/static/js/2.20d83c76.chunk.js.LICENSE.txt",
-    "static/media/logo.svg": "/MattKirbyGIT/Simple-React-UI.git/static/media/logo.5d5d9eef.svg"
+    "main.css": "/Simple-React-UI/static/css/main.5f361e03.chunk.css",
+    "main.js": "/Simple-React-UI/static/js/main.2954dd0f.chunk.js",
+    "main.js.map": "/Simple-React-UI/static/js/main.2954dd0f.chunk.js.map",
+    "runtime-main.js": "/Simple-React-UI/static/js/runtime-main.6d17f39e.js",
+    "runtime-main.js.map": "/Simple-React-UI/static/js/runtime-main.6d17f39e.js.map",
+    "static/js/2.20d83c76.chunk.js": "/Simple-React-UI/static/js/2.20d83c76.chunk.js",
+    "static/js/2.20d83c76.chunk.js.map": "/Simple-React-UI/static/js/2.20d83c76.chunk.js.map",
+    "index.html": "/Simple-React-UI/index.html",
+    "precache-manifest.c7b86ed7da9784e24e93e783d8dc7185.js": "/Simple-React-UI/precache-manifest.c7b86ed7da9784e24e93e783d8dc7185.js",
+    "service-worker.js": "/Simple-React-UI/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/Simple-React-UI/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.20d83c76.chunk.js.LICENSE.txt": "/Simple-React-UI/static/js/2.20d83c76.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/Simple-React-UI/static/media/logo.5d5d9eef.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.cd6e15da.js",
+    "static/js/runtime-main.6d17f39e.js",
     "static/js/2.20d83c76.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.1f2769d0.chunk.js"
+    "static/js/main.2954dd0f.chunk.js"
   ]
 }
