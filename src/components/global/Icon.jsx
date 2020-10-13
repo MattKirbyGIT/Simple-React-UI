@@ -17,10 +17,10 @@ import {
   faClipboard,
 } from "@fortawesome/free-solid-svg-icons";
 
-import "../../styles/FA-Icon.css";
+import "../../styles/global/Icon.css";
 
 class Icon extends Component {
-  state = { icon: faSquare };
+  state = { icon: undefined };
 
   handleIcon = () => {
     if (this.props.icon === "close") {
@@ -49,8 +49,7 @@ class Icon extends Component {
       this.setState({ icon: faTag });
     } else if (this.props.icon === "clipboard") {
       this.setState({ icon: faClipboard });
-    } else{
-        
+    } else {
     }
   };
 
