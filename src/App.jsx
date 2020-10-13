@@ -1,11 +1,18 @@
 import React from "react";
-import logo from "./logo.svg";
+import Icon from "./components/global/Icon";
 import "./App.css";
 
 function App() {
-  return <div className="App">
-    
-  </div>;
+  return (
+    <div className="App">
+      <Icon
+        size={"2em"}
+        display={true}
+        icon={"close"}
+        iconColor={"lightcoral"}
+      />
+    </div>
+  );
 }
 
 export default App;
