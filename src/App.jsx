@@ -1,5 +1,6 @@
 import React from "react";
 import Icon from "./components/global/Icon";
+import ButtonAdv from "./components/global/ButtonAdv";
 import "./App.css";
 
 function App() {
