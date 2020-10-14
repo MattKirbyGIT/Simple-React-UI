@@ -12,6 +12,29 @@ function App() {
         icon={"close"}
         iconColor={"lightcoral"}
       />
+
+      <ButtonAdv
+        display={true}
+        pill={true}
+        label={"Cancel Upload?"}
+        labelColor={"#6c757d"}
+        shadow={true}
+        fontSize={"1.1em"}
+        icon={"close"}
+        iconColor={"lightCoral"}
+        reveal={true}
+        click={(event) => this.renderDisgardToast(true)}
+      />
+
+      <SLInput
+        display={true}
+        shrink={false}
+        textSize={"2em"}
+        prepend={"Title:"}
+        clear={true}
+        focusOnMount={true}
+        inputSubmit={this.handleTitleInput}
+      />
     </div>
   );
 }

@@ -1,0 +1,68 @@
+.SLInput-box{ 
+  display: inline-flex;
+   width: 100%;
+   overflow: hidden;
+   align-items: center;
+   pointer-events: all;
+   
+}
+
+.SLInput-pre{
+    text-align: left;
+    pointer-events: none;
+    transition: all 200ms;
+    max-width: 100%;
+}
+
+.SLInput-pre-closed{
+    max-width: 0%;
+  
+    overflow: hidden;
+    transition: all 200ms;
+}
+
+.SLInput-sizer{
+    position: absolute;
+  height: 0;
+  overflow: hidden;
+  white-space: pre;
+}
+
+.SLInput-input-wrapper{
+    max-width: 100%;
+    transition: all 200ms;
+    display: inline-flex;
+   align-items: center;
+   justify-content: space-between;
+
+}
+
+
+
+.SLInput-input-wrapper:focus{
+  outline: none;
+  box-shadow: none !important;
+  transition: all 200ms;
+
+}
+
+.SLInput-input{
+    overflow: hidden;
+    border: none;
+ background: none;
+  outline: none;
+  color: black !important;
+  pointer-events: all;
+   
+}
+
+.SLInput-input::placeholder{
+  color: darkgrey !important;
+}
+
+.SLInput-clear-wrapper{
+  float: right;
+}
+
+
+
