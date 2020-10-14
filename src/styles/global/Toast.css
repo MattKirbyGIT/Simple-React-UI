@@ -1,0 +1,52 @@
+.TN-box{
+   background-color: white;
+   border-radius: 50px;
+   display: flex;
+   justify-content: left;
+   align-items: center;
+   transition: transform 100ms linear;
+   cursor: pointer;
+   user-select: none; /* Standard */
+   overflow: hidden;
+   pointer-events: all;
+
+}
+
+
+.TN-content-box{
+   display: inline-flex;
+   align-items: center;
+   height: 60px;
+}
+
+.TN-content{
+
+  
+   text-align: center;
+  
+}
+
+.TN-text{
+   text-align: center;
+   
+
+}
+
+.TN-text-small{
+   font-size: medium;
+   color: lightgrey;
+   line-height: inherit;
+}
+
+
+
+.toast-button{
+   overflow: visible
+}
+
+
+
+.shadow{
+    box-shadow: 2px 2px 10px #dadde0,
+    -2px -2px 10px #ffffff;
+  }

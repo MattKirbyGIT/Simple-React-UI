@@ -1,0 +1,45 @@
+.MLI-box{
+   
+    overflow: hidden;
+    width: 100%;
+}
+
+.MLI-inputSizer{
+    display: inline-block;
+   
+    position: absolute;
+   
+    overflow: hidden;
+    white-space: nowrap;
+}  
+
+.MLI-input{
+  
+    outline: none;
+    background-color: #f8f9fa !important;
+   
+    border: none;
+    width: 100%;
+    display: block;
+   
+   
+    resize: none;
+  
+    
+    transition: background-color 200ms linear;
+
+}
+
+.MLI-counter{
+    width: 100%;
+    text-align: right;
+    color: darkgrey;
+    font-size: smaller;
+}
+
+.MLI-input:hover{
+    outline: none;
+    background-color: #e9ecef !important;
+    transition: all 200ms;
+  
+  }

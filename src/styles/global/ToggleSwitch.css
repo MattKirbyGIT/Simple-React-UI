@@ -1,0 +1,23 @@
+.TS-Wrapper {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.TS-Label {
+  margin: 0;
+}
+
+.TS-LabelToggle{
+    white-space: nowrap;
+}
+
+.TS-Box {
+  display: flex;
+  pointer-events: all;
+  align-items: center;
+}
+
+.TS-Switch {
+}

@@ -1,43 +1,71 @@
-import React from "react";
-import Icon from "./components/global/Icon";
-import ButtonAdv from "./components/global/ButtonAdv";
-import SLInput from "./components/global/SingleLineInput";
-import "./App.css";
+import React, { Component } from "react";
+import ToastHandler from "./components/global/ToastHandler";
+import Uploader from "./components/uploader/Uploader";
+import Toast from "./components/global/Toast";
 
-function App() {
-  return (
-    <div className="App">
-      <Icon
-        size={"2em"}
-        display={true}
-        icon={"close"}
-        iconColor={"lightcoral"}
-      />
+import "../src/App.css";
 
-      <ButtonAdv
-        display={true}
-        pill={true}
-        label={"Cancel Upload?"}
-        labelColor={"#6c757d"}
-        shadow={true}
-        fontSize={"1.1em"}
-        icon={"close"}
-        iconColor={"lightCoral"}
-        reveal={true}
-        click={(event) => this.renderDisgardToast(true)}
-      />
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      apiResponse: "",
+      uploader: true,
+      toast: undefined,
+    };
+  }
 
-      <SLInput
+  callAPI() {
+    fetch("http://localhost:9000/testAPI")
+      .then((res) => res.text())
+      .then((res) => this.setState({ apiResponse: res }));
+  }
+
+  componentWillMount() {
+    this.callAPI();
+  }
+
+  renderUploader = () => {
+    this.setState({ uploader: !this.state.uploader });
+  };
+
+  renderToast = (type, title, small, timeout) => {
+    var newToast = (
+      <Toast
+        key={small}
         display={true}
-        shrink={false}
-        textSize={"2em"}
-        prepend={"Title:"}
-        clear={true}
-        focusOnMount={true}
-        inputSubmit={this.handleTitleInput}
+        text={title}
+        type={type}
+        smallText={small}
+        timeout={timeout}
       />
-    </div>
-  );
+    );
+    this.setState({ toast: newToast });
+  };
+
+  render() {
+    return (
+      <div className="App bg-white">
+        <div>
+          <h1 className={"lead title"}>
+            An example image upload app using reusable React components
+          </h1>
+        </div>
+
+        <Uploader
+          display={this.state.uploader}
+          toggle={this.renderUploader}
+          renderToast={(type, title, small, timeout) =>
+            this.renderToast(type, title, small, timeout)
+          }
+        />
+
+        <ToastHandler toast={this.state.toast} />
+
+        <p>{this.state.apiResponse}</p>
+      </div>
+    );
+  }
 }
 
 export default App;

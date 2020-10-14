@@ -1,0 +1,10 @@
+.TG-box{
+    border-radius: 50px;
+    overflow: hidden;
+    display: inline-flex;
+    pointer-events: all;
+    height: 50px;
+    align-items: center;
+   
+   
+}
