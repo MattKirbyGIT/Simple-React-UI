@@ -65,7 +65,6 @@ class ImageUploader extends Component {
       this.convertURL(url);
     } else {
       this.setState({ validURL: false });
-      //this.props.toggleToast(true, "Invalid URL: " + url)
       this.props.renderToast("danger", "Invalid URL!", url, 5);
     }
   };
@@ -75,20 +74,18 @@ class ImageUploader extends Component {
     //type
     var validTypes = ["image/jpeg", "image/png", "image/gif"];
     if (!validTypes.includes(image.type)) {
-      this.props.toggleToast(true, "Invalid file type!");
+    
+      this.props.renderToast("danger", "Invalid file type!", null, 5);
       valid = false;
     }
 
     //size
     var maxSizeBytes = 4e6; // 4MB
     if (image.size > maxSizeBytes) {
-      this.props.toggleToast(
-        true,
-        "Maximum upload size exceeded! (Your image was " +
-          Math.round((image.size / 1e6) * 10) / 10 +
-          " MB)"
-      );
-
+      
+      this.props.renderToast("danger", "Maximum upload size exceeded! (Your image was " +
+      Math.round((image.size / 1e6) * 10) / 10 +
+      " MB)", null, 5);
       valid = false;
     }
 

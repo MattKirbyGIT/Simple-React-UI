@@ -47,8 +47,8 @@ class App extends Component {
     return (
       <div className="App bg-white">
         <div>
-          <h1 className={"lead title"}>
-            An example image upload app using reusable React components
+          <h1 className={"lead title"} style={{fontSize: '30px'}}>
+            An example image uploader app using reusable React components
           </h1>
         </div>
 
