@@ -68,19 +68,22 @@ class Toast extends Component {
     return (
       <React.Fragment>
         <Fade appear={true} in={this.state.display} unmountOnExit={true}>
+          <div>
+
+         
           <div
             className="TN-box shadow py-2 px-3 m-2"
             onMouseEnter={this.handleHover}
             onMouseLeave={this.handleHover}
             style={{
-              maxWidth: !this.state.display ? "0" : "1000px",
+              maxWidth: !this.state.display ? "0" : "100%",
               transition: "all 200ms",
             }}
           >
             <div className={"TN-content-box"}>
               {this.state.icon}
               <div className={"TN-content"}>
-                <p className="lead TN-text my-0 mx-4 text-muted">
+                <p className="lead TN-text my-0 mx-3 text-muted">
                   {this.props.text}
                 </p>
                 <small className="TN-text-small lead my-0 mx-3" style={{display: this.props.smallText ? 'block' : 'none'}}>
@@ -88,8 +91,33 @@ class Toast extends Component {
                 </small>
               </div>
 
-              
+           
+              <ButtonAdv
+                  display={this.props.reject}
+                  pill={true}
+                  text={"Cancel"}
+                  labelColor={"#6c757d"}
+                  shadow={true}
+                  fontSize={"1.1em"}
+                  icon={"close"}
+                  iconColor={"lightCoral"}
+                  click={(event) => this.props.reject()}
+                />
+
+              <ButtonAdv
+                  display={this.props.accept}
+                  pill={true}
+                  text={"Accept"}
+                  labelColor={"#6c757d"}
+                  shadow={true}
+                  fontSize={"1.1em"}
+                  icon={"check"}
+                  iconColor={"lightCoral"}
+                  click={(event) => this.props.accept()}
+                />
+                 
             </div>
+          </div>
           </div>
         </Fade>
       </React.Fragment>

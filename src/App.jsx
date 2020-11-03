@@ -11,7 +11,7 @@ class App extends Component {
     this.state = {
       apiResponse: "",
       uploader: true,
-      toast: undefined,
+      toasts: [],
     };
   }
 
@@ -29,38 +29,41 @@ class App extends Component {
     this.setState({ uploader: !this.state.uploader });
   };
 
-  renderToast = (type, title, small, timeout) => {
+  renderToast = (type, title, small, timeout, reject, accept) => {
     var newToast = (
+    
       <Toast
-        key={small}
+        key={this.state.toasts.length}
         display={true}
         text={title}
         type={type}
         smallText={small}
         timeout={timeout}
+        reject={reject}
+        accept={accept}
       />
+    
     );
-    this.setState({ toast: newToast });
+    this.setState({ toasts: [...this.state.toasts, newToast] });
   };
 
   render() {
     return (
       <div className="App bg-white">
-        <div>
-          <h1 className={"lead title"} style={{fontSize: '30px'}}>
-            An example image uploader app using reusable React components
-          </h1>
-        </div>
+      
 
         <Uploader
           display={this.state.uploader}
           toggle={this.renderUploader}
-          renderToast={(type, title, small, timeout) =>
-            this.renderToast(type, title, small, timeout)
+          renderToast={(type, title, small, timeout, reject, accept) =>
+            this.renderToast(type, title, small, timeout, reject, accept)
           }
         />
 
-        <ToastHandler toast={this.state.toast} />
+
+        {this.state.toasts}
+
+        
 
         <p>{this.state.apiResponse}</p>
       </div>

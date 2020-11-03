@@ -1,7 +1,7 @@
 .TN-box{
    background-color: white;
    border-radius: 50px;
-   display: flex;
+   display: inline-flex;
    justify-content: left;
    align-items: center;
    transition: transform 100ms linear;
@@ -9,7 +9,7 @@
    user-select: none; /* Standard */
    overflow: hidden;
    pointer-events: all;
-
+   z-index: 999 !important;
 }
 
 

@@ -29,8 +29,7 @@ class Uploader extends Component {
 
   renderDisgardToast = (event) => {
     if (event) {
-      this.props.renderToast("danger", "Disgard Post?", this.state.test, 5);
-      this.setState({ test: this.state.test + 1 });
+      this.props.renderToast("danger", "Disgard Post?", null, 5);
     }
   };
 
