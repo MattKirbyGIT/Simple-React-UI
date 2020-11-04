@@ -4,6 +4,7 @@ import Fade from "react-bootstrap/Fade";
 import Icon from "./Icon";
 import ButtonAdv from "./ButtonAdv";
 import "../../styles/global/Toast.css";
+import { faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 
 class Toast extends Component {
   constructor(props) {
@@ -11,8 +12,8 @@ class Toast extends Component {
     this.state = {
       timeout: props.timeout,
       timer: 0,
-      display: false,
       hover: false,
+      display: true,
       type: props.type,
       icon: undefined,
       text: props.text,
@@ -64,63 +65,73 @@ class Toast extends Component {
     this.setState({ hover: !this.state.hover });
   };
 
+  handleToggle = () => {
+    this.setState({ display: false });
+  };
+
+  handleAccept = () => {
+    this.props.accept();
+    this.handleToggle();
+  };
+
   render() {
     return (
-      <React.Fragment>
-        <Fade appear={true} in={this.state.display} unmountOnExit={true}>
-          <div>
+      <Fade appear={true} in={this.state.display} unmountOnExit={true}>
+        <div
+          className="TN-box shadow py-2 px-3 m-2"
+          onMouseEnter={this.handleHover}
+          onMouseLeave={this.handleHover}
+          style={{
+            maxWidth: !this.state.display ? "0" : "100%",
+            transition: "all 200ms",
+          }}
+        >
+          <div className={"TN-content-box"}>
+            {this.state.icon}
+            <div className={"TN-content"}>
+              <p className="lead TN-text my-0 mx-3 text-muted">
+                {this.props.text}
+              </p>
+              <small
+                className="TN-text-small lead my-0 mx-3"
+                style={{ display: this.props.smallText ? "block" : "none" }}
+              >
+                {this.props.smallText}
+              </small>
 
-         
-          <div
-            className="TN-box shadow py-2 px-3 m-2"
-            onMouseEnter={this.handleHover}
-            onMouseLeave={this.handleHover}
-            style={{
-              maxWidth: !this.state.display ? "0" : "100%",
-              transition: "all 200ms",
-            }}
-          >
-            <div className={"TN-content-box"}>
-              {this.state.icon}
-              <div className={"TN-content"}>
-                <p className="lead TN-text my-0 mx-3 text-muted">
-                  {this.props.text}
-                </p>
-                <small className="TN-text-small lead my-0 mx-3" style={{display: this.props.smallText ? 'block' : 'none'}}>
-                  {this.props.smallText}
-                </small>
-              </div>
-
-           
-              <ButtonAdv
-                  display={this.props.reject}
+              <div
+                className="TN-choice mx-3 my-2"
+                style={{
+                  display:
+                    this.props.cancel || this.props.accept ? "flex" : "none",
+                }}
+              >
+                <ButtonAdv
+                  display={this.props.cancel ? true : false}
                   pill={true}
-                  text={"Cancel"}
+                  label={"Cancel"}
                   labelColor={"#6c757d"}
-                  shadow={true}
                   fontSize={"1.1em"}
                   icon={"close"}
                   iconColor={"lightCoral"}
-                  click={(event) => this.props.reject()}
+                  click={(event) => this.handleToggle()}
                 />
 
-              <ButtonAdv
-                  display={this.props.accept}
+                <ButtonAdv
+                  display={this.props.accept ? true : false}
                   pill={true}
-                  text={"Accept"}
+                  label={"Accept"}
                   labelColor={"#6c757d"}
-                  shadow={true}
                   fontSize={"1.1em"}
                   icon={"check"}
-                  iconColor={"lightCoral"}
-                  click={(event) => this.props.accept()}
+                  iconColor={"#80F0B8"}
+                  click={(event) => this.handleAccept()}
                 />
-                 
+              </div>
             </div>
           </div>
-          </div>
-        </Fade>
-      </React.Fragment>
+        </div>
+      </Fade>
     );
   }
 }

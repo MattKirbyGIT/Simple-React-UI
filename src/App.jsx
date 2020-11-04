@@ -29,39 +29,26 @@ class App extends Component {
     this.setState({ uploader: !this.state.uploader });
   };
 
-  renderToast = (type, title, small, timeout, reject, accept) => {
-    var newToast = (
-    
-      <Toast
-        key={this.state.toasts.length}
-        display={true}
-        text={title}
-        type={type}
-        smallText={small}
-        timeout={timeout}
-        reject={reject}
-        accept={accept}
-      />
-    
-    );
-    this.setState({ toasts: [...this.state.toasts, newToast] });
+  renderToast = (newToast) => {
+    this.setState({ toasts: [newToast, ...this.state.toasts]});
   };
 
   render() {
     return (
       <div className="App bg-white">
+      <div style={{position: "absolute"}}>
+          {this.state.toasts.slice(0,1)}
+      </div>
       
 
         <Uploader
           display={this.state.uploader}
           toggle={this.renderUploader}
-          renderToast={(type, title, small, timeout, reject, accept) =>
-            this.renderToast(type, title, small, timeout, reject, accept)
-          }
+          renderToast={[(toast) => this.renderToast(toast), this.state.toasts.length]}
         />
 
 
-        {this.state.toasts}
+        
 
         
 

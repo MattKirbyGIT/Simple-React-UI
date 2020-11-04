@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Fade from "react-bootstrap/Fade";
 import ButtonAdv from "../global/ButtonAdv";
 import SLInput from "../global/SingleLineInput";
+import Toast from "../global/Toast";
 import "../../styles/global/ImageUploader.css";
 
 class ImageUploader extends Component {
@@ -65,7 +66,8 @@ class ImageUploader extends Component {
       this.convertURL(url);
     } else {
       this.setState({ validURL: false });
-      this.props.renderToast("danger", "Invalid URL!", url, 5);
+      //this.props.renderToast("danger", "Invalid URL!", url, 5);
+      this.errorToast("Invalid URL!",url )
     }
   };
 
@@ -74,18 +76,29 @@ class ImageUploader extends Component {
     //type
     var validTypes = ["image/jpeg", "image/png", "image/gif"];
     if (!validTypes.includes(image.type)) {
-    
-      this.props.renderToast("danger", "Invalid file type!", null, 5);
+      //this.props.renderToast("danger", "Invalid file type!", null, 5);
+      this.errorToast("Error", "Invalid file type!")
       valid = false;
     }
 
     //size
     var maxSizeBytes = 4e6; // 4MB
     if (image.size > maxSizeBytes) {
-      
-      this.props.renderToast("danger", "Maximum upload size exceeded! (Your image was " +
-      Math.round((image.size / 1e6) * 10) / 10 +
-      " MB)", null, 5);
+      // this.props.renderToast(
+      //   "danger",
+      //   "Maximum upload size exceeded! (Your image was " +
+      //     Math.round((image.size / 1e6) * 10) / 10 +
+      //     " MB)",
+      //   null,
+      //   5
+      // );
+
+      this.errorToast(
+        "Error",
+        "Maximum upload size exceeded! (Your image was " +
+          Math.round((image.size / 1e6) * 10) / 10 +
+          " MB)"
+      );
       valid = false;
     }
 
@@ -122,7 +135,8 @@ class ImageUploader extends Component {
         this.props.returnImage(files[0]);
       }
     } else {
-      this.props.toggleToast(true, "Only one file may be uploaded!");
+      this.errorToast("Error", "Only one file may be uploaded!");
+      //this.props.toggleToast(true, "Only one file may be uploaded!");
     }
   };
 
@@ -140,6 +154,19 @@ class ImageUploader extends Component {
     });
   };
 
+  errorToast = (main, sub) => {
+    var toast = (
+      <Toast
+        key={this.props.renderToast[1]}
+        text={main}
+        type={"danger"}
+        smallText={sub}
+        timeout={false}
+      />
+    );
+    this.props.renderToast[0](toast);
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -153,7 +180,7 @@ class ImageUploader extends Component {
               style={{
                 backgroundImage: "url(" + this.state.imgSrc + ")",
                 opacity: 1,
-                backgroundColor: 'black',
+                backgroundColor: "black",
               }}
             >
               <div

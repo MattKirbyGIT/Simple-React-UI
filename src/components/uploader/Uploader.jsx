@@ -5,10 +5,9 @@ import ButtonAdv from "../global/ButtonAdv";
 import SLInput from "../global/SingleLineInput";
 import MLInput from "../global/MultiLineInput";
 import TagHandler from "../global/TagHandler";
-
+import Toast from "../global/Toast";
 import ToggleSwitch from "../global/ToggleSwitch";
 import "../../styles/global/Uploader.css";
-
 
 class Uploader extends Component {
   constructor(props) {
@@ -18,7 +17,7 @@ class Uploader extends Component {
     this.state = {
       imageUploader: true,
       imgToggleButton: true,
-      disgardToast: false,
+     
 
       img: [],
       description: "",
@@ -28,10 +27,25 @@ class Uploader extends Component {
   }
 
   renderDisgardToast = (event) => {
-    if (event) {
-      this.props.renderToast("danger", "Disgard Post?", null, 5);
+    if (event === true) {
+      this.setState({ disgardToast: true }, () => {
+        var toast = (
+          <Toast
+            key={this.props.renderToast[1]}
+            text={"Disgard Post?"}
+            type={"danger"}
+            smallText={"Your post will not be saved"}
+            cancel={true}
+            accept={() => this.props.toggle()}
+          />
+        );
+        this.props.renderToast[0](toast);
+      });
     }
   };
+
+ 
+
 
   setImagePreview = (e) => {
     this.setState({ img: [e] }, () => {
@@ -54,9 +68,9 @@ class Uploader extends Component {
     this.setState({ description: event });
   };
 
-  handleTagsInput = (event) =>{
-      this.setState({tags: event});
-  }
+  handleTagsInput = (event) => {
+    this.setState({ tags: event });
+  };
 
   render() {
     return (
@@ -145,7 +159,10 @@ class Uploader extends Component {
                     />
                     <p className="lead text-muted mt-3 mb-0">Add Tags:</p>
                     <div>
-                      <TagHandler maxTags={5} inputSubmit={this.handleTagsInput}/>
+                      <TagHandler
+                        maxTags={5}
+                        inputSubmit={this.handleTagsInput}
+                      />
                     </div>
                   </div>
                 </div>

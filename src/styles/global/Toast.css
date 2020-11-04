@@ -1,52 +1,48 @@
-.TN-box{
-   background-color: white;
-   border-radius: 50px;
-   display: inline-flex;
-   justify-content: left;
-   align-items: center;
-   transition: transform 100ms linear;
-   cursor: pointer;
-   user-select: none; /* Standard */
-   overflow: hidden;
-   pointer-events: all;
-   z-index: 999 !important;
+.TN-box {
+  background-color: white;
+  border-radius: 40px;
+
+  justify-content: left;
+  align-items: center;
+  transition: transform 100ms linear;
+  cursor: pointer;
+  user-select: none; /* Standard */
+  overflow: hidden;
+  pointer-events: all;
+  z-index: 999 !important;
 }
 
-
-.TN-content-box{
-   display: inline-flex;
-   align-items: center;
-   height: 60px;
+.TN-content-box {
+  display: flex;
+  align-items: center;
 }
 
-.TN-content{
+.TN-content {
+  display: flex; /* establish flex container */
+  flex-direction: column; /* make main axis vertical */
+  justify-content: center; /* center items vertically, in this case */
+  align-items: center;
+}
 
+.TN-choice {
   
-   text-align: center;
-  
 }
 
-.TN-text{
-   text-align: center;
-   
-
+.TN-text {
+  width: 100%;
+  text-align: center;
 }
 
-.TN-text-small{
-   font-size: medium;
-   color: lightgrey;
-   line-height: inherit;
+.TN-text-small {
+  font-size: medium;
+  color: lightgrey;
+  line-height: inherit;
 }
 
-
-
-.toast-button{
-   overflow: visible
+.toast-button {
+  overflow: visible;
 }
 
-
-
-.shadow{
-    box-shadow: 2px 2px 10px #dadde0,
-    -2px -2px 10px #ffffff;
-  }
+.shadow {
+  box-shadow: 2px 2px 10px #dadde0, -2px -2px 10px #ffffff;
+}
