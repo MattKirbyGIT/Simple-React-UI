@@ -27,7 +27,7 @@
 
 
 .imgViewBox{
-pointer-events: all;
+
    display: inline-block;
   text-align: center;
     overflow: hidden;
