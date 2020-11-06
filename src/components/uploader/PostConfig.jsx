@@ -34,7 +34,7 @@ class PostConfig extends Component {
     return (
       <Fade appear={false} in={this.props.display} unmountOnExit={true}>
         <div
-          className={"step2-panel container-fluid"}
+          className={"step2-panel"}
           style={{
             display: this.state.imageUploader ? "none" : "inline-block",
           }}
@@ -44,9 +44,7 @@ class PostConfig extends Component {
               className="col-12 col-md-8 mb-2"
               style={{ display: "inline-block" }}
             >
-              <small className="lead text-muted pb-4">
-                Enter your post title below.
-              </small>
+          
               <SLInput
                 display={true}
                 shrink={false}

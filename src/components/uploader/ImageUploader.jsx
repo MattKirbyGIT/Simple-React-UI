@@ -120,11 +120,40 @@ class ImageUploader extends Component {
     this.props.renderToast[0](toast);
   };
 
+  renderDisgardToast = () => {
+    var toast = (
+      <Toast
+        key={this.props.renderToast[1]}
+        text={"Disgard Post?"}
+        type={"danger"}
+        smallText={"Your post will not be saved"}
+        cancel={true}
+        timeout={20}
+        accept={() => this.props.toggle()}
+      />
+    );
+    this.props.renderToast[0](toast);
+  };
+
   render() {
     return (
       <React.Fragment>
         <Fade appear={true} in={this.props.display} unmountOnExit={true}>
           <div id={"uploader"} className="img-uploader-panel bg-white">
+            <ButtonAdv
+              display={true}
+              pill={true}
+              label={"Cancel Upload?"}
+              labelColor={"#6c757d"}
+              shadow={true}
+              fontSize={"1.1em"}
+              icon={"close"}
+              iconColor={"lightCoral"}
+              reveal={true}
+              topRight={true}
+              click={this.renderDisgardToast}
+            />
+
             <DragAndDrop
               height={"350px"}
               handleDrop={(dropped) => this.handleDropped(dropped)}

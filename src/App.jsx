@@ -36,7 +36,7 @@ class App extends Component {
   render() {
     return (
       <div className="App bg-white">
-        <div style={{ position: "absolute" }}>
+        <div style={{ position: "absolute", zIndex: 1 }}>
           {this.state.toasts.slice(0, 1)}
         </div>
 
