@@ -30,27 +30,26 @@ class App extends Component {
   };
 
   renderToast = (newToast) => {
-    this.setState({ toasts: [newToast, ...this.state.toasts]});
+    this.setState({ toasts: [newToast, ...this.state.toasts] });
   };
 
   render() {
     return (
       <div className="App bg-white">
-      <div style={{position: "absolute"}}>
-          {this.state.toasts.slice(0,1)}
-      </div>
-      
+        <div style={{ position: "absolute" }}>
+          {this.state.toasts.slice(0, 1)}
+        </div>
 
         <Uploader
           display={this.state.uploader}
           toggle={this.renderUploader}
-          renderToast={[(toast) => this.renderToast(toast), this.state.toasts.length]}
+          renderToast={[
+            (toast) => this.renderToast(toast),
+            this.state.toasts.length,
+          ]}
         />
 
 
-        
-
-        
 
         <p>{this.state.apiResponse}</p>
       </div>

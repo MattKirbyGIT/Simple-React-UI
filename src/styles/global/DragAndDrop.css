@@ -1,0 +1,28 @@
+.DND-Dropzone {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: inset 0px 0px 277px 3px #4b4b4b;
+  transition: all 400ms;
+
+  opacity: 1,
+ 
+}
+
+.DND-DropCenter {
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  color: white;
+}
+
+.DND-Border {
+  padding: 0px 10% 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px dashed rgba(255, 255, 255, 0.8);
+}

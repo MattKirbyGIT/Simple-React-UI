@@ -1,7 +1,7 @@
 .uploader-wrapper{
-    pointer-events: none;
+  pointer-events: none;
     position: absolute;
-   height: 100vh;
+   height: 100%;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -12,13 +12,12 @@
 
 
 .title{
+
     font-weight: 300;
     font-size: 3rem;
     height: auto;
 }
-.step1-panel{
-    pointer-events: all;
-}
+
 
 .step2-panel{
     max-width: 1000px;

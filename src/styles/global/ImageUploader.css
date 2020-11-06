@@ -11,50 +11,12 @@
     0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03);
 }
 
-.dropzone {
+.IU-separator {
+  width: 15%;
+  display: inline-block;
+  clear: none;
   position: relative;
- 
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  height: 350px;
-  box-shadow: inset 0px 0px 277px 3px #4b4b4b;
-  transition: all 400ms;
-}
-#preview-image {
-  width: 100%;
-  height: 100%;
-  opacity: 0.6;
-}
-
-.dropZoneEffect {
-  opacity: 0.6;
-  transition: all 400ms;
-}
-
-.drop-center {
-  color: white;
-  margin: 0;
-height: 70%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0);
-  text-align: center;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-justify-content: center;
-  border: 3px dashed rgba(255, 255, 255, 0.8);
- 
-}
-
-.drag-drop-box {
-
-  
-  pointer-events: none;
+  top: 0.7em;
 }
 
 .alternate-upload {

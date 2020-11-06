@@ -1,63 +1,46 @@
 import React, { Component } from "react";
 import Fade from "react-bootstrap/Fade";
 import ImageUploader from "./ImageUploader";
+import PostConfig from "./PostConfig";
 import ButtonAdv from "../global/ButtonAdv";
-import SLInput from "../global/SingleLineInput";
-import MLInput from "../global/MultiLineInput";
-import TagHandler from "../global/TagHandler";
+
 import Toast from "../global/Toast";
-import ToggleSwitch from "../global/ToggleSwitch";
+
 import "../../styles/global/Uploader.css";
 
 class Uploader extends Component {
   constructor(props) {
     super(props);
-    this.urlToastRef = React.createRef();
 
     this.state = {
       imageUploader: true,
-      imgToggleButton: true,
-     
+      postConfig: false,
 
-      img: [],
+      imgBlob: "",
       description: "",
       title: "",
       tags: [],
     };
   }
 
-  renderDisgardToast = (event) => {
-    if (event === true) {
-      this.setState({ disgardToast: true }, () => {
-        var toast = (
-          <Toast
-            key={this.props.renderToast[1]}
-            text={"Disgard Post?"}
-            type={"danger"}
-            smallText={"Your post will not be saved"}
-            cancel={true}
-            accept={() => this.props.toggle()}
-          />
-        );
-        this.props.renderToast[0](toast);
-      });
-    }
+  renderDisgardToast = () => {
+    var toast = (
+      <Toast
+        key={this.props.renderToast[1]}
+        text={"Disgard Post?"}
+        type={"danger"}
+        smallText={"Your post will not be saved"}
+        cancel={true}
+        timeout={20}
+        accept={() => this.props.toggle()}
+      />
+    );
+    this.props.renderToast[0](toast);
   };
 
- 
-
-
-  setImagePreview = (e) => {
-    this.setState({ img: [e] }, () => {
-      this.setState({ imageUploader: false });
-      var previewImg = URL.createObjectURL(
-        this.state.img[this.state.img.length - 1]
-      );
-      var img = document.createElement("img");
-      img.src = previewImg;
-      img.id = "previewImg";
-      document.getElementById("imgViewWrapper").prepend(img);
-    });
+  handleImageInput = (e) => {
+    console.log(e)
+    this.setState({ imgBlob: e, imageUploader: false, postConfig: true }, () => {});
   };
 
   handleTitleInput = (event) => {
@@ -78,19 +61,18 @@ class Uploader extends Component {
         <Fade appear={true} in={this.props.display} unmountOnExit={true}>
           <div className="uploader-wrapper">
             <div
-              className="step1-panel"
-              style={{ display: this.state.img.length ? "none" : "block" }}
+              style={{ display: !this.state.imageUploader ? "none" : "block" }}
             >
-              <div className="uploader-heading p-2">
-                <h1 className="lead title m-0">New Post</h1>
-                <small className="lead text-muted">
+              
+                <h1 className="lead title mb-0">New Post</h1>
+                <p className="lead text-muted mb-1">
                   Upload an image to get started.
-                </small>
-              </div>
+                </p>
+            
               <div style={{ position: "relative" }}>
                 <ImageUploader
                   display={this.state.imageUploader}
-                  returnImage={(e) => this.setImagePreview(e)}
+                  returnImage={(e) => this.handleImageInput(e)}
                   renderToast={this.props.renderToast}
                 />
                 <ButtonAdv
@@ -104,70 +86,17 @@ class Uploader extends Component {
                   iconColor={"lightCoral"}
                   reveal={true}
                   topRight={true}
-                  click={(event) => this.renderDisgardToast(true)}
+                  click={this.renderDisgardToast}
                 />
               </div>
             </div>
-
-            <div
-              className={"step2-panel container-fluid"}
-              style={{
-                display: this.state.imageUploader ? "none" : "inline-block",
-              }}
-            >
-              <div className="row mb-2">
-                <div
-                  className="col-12 col-md-8 mb-2"
-                  style={{ display: "inline-block" }}
-                >
-                  <small className="lead text-muted pb-4">
-                    Enter your post title below.
-                  </small>
-                  <SLInput
-                    display={true}
-                    shrink={false}
-                    textSize={"2em"}
-                    prepend={"Title:"}
-                    clear={true}
-                    focusOnMount={true}
-                    inputSubmit={this.handleTitleInput}
-                  />
-                </div>
-              </div>
-
-              <div className="row">
-                <div className="col-12 col-md-8 mb-4">
-                  <div id="imgViewWrapper" className={"imgViewBox"}>
-                    <MLInput
-                      textSize={"1em"}
-                      placeholder={"Add an image description!"}
-                      max={100}
-                      maxRows={10}
-                      inputSubmit={this.handleDescriptionInput}
-                    />
-                  </div>
-                </div>
-                <div className="col-12 col-md-4">
-                  <div className="post-options">
-                    <p className="lead text-muted mb-2">Post Visibility:</p>
-                    <ToggleSwitch
-                      label={"Visible to: "}
-                      maxWidth={"800px"}
-                      default={true}
-                      lable0={"Only me"}
-                      label1={"Community"}
-                    />
-                    <p className="lead text-muted mt-3 mb-0">Add Tags:</p>
-                    <div>
-                      <TagHandler
-                        maxTags={5}
-                        inputSubmit={this.handleTagsInput}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <PostConfig
+              display={this.state.postConfig}
+              img={this.state.imgBlob}
+              title={this.handleTitleInput}
+              description={this.handleDescriptionInput}
+              tags={this.handleTagsInput}
+            />
           </div>
         </Fade>
       </React.Fragment>
