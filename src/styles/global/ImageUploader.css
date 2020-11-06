@@ -1,7 +1,7 @@
 .img-uploader-panel {
   z-index: 1;
   background: #ecf0f3;
-position: relative;
+overflow: hidden;
   width: 100%;
   background-color: none !important;
   text-align: center;

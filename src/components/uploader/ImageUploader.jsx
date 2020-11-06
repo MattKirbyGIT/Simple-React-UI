@@ -139,7 +139,7 @@ class ImageUploader extends Component {
     return (
       <React.Fragment>
         <Fade appear={true} in={this.props.display} unmountOnExit={true}>
-          <div id={"uploader"} className="img-uploader-panel bg-white">
+          <div style={{position: "relative"}}>
             <ButtonAdv
               display={true}
               pill={true}
@@ -153,64 +153,67 @@ class ImageUploader extends Component {
               topRight={true}
               click={this.renderDisgardToast}
             />
+            <div id={"uploader"} className="img-uploader-panel bg-white">
+              <DragAndDrop
+                height={"350px"}
+                handleDrop={(dropped) => this.handleDropped(dropped)}
+              />
 
-            <DragAndDrop
-              height={"350px"}
-              handleDrop={(dropped) => this.handleDropped(dropped)}
-            />
+              <hr className="IU-separator" />
+              <p
+                className="lead text-muted mt-3 mb-0 mx-3"
+                style={{ display: "inline-block" }}
+              >
+                Alternatively
+              </p>
+              <hr className="IU-separator" />
 
-            <hr className="IU-separator" />
-            <p
-              className="lead text-muted mt-3 mb-0 mx-3"
-              style={{ display: "inline-block" }}
-            >
-              Alternatively
-            </p>
-            <hr className="IU-separator" />
-
-            <div className="alternate-upload mx-0  p-3">
-              <div className={"url-input-wrapper mb-2 "}>
-                <SLInput
-                  display={true}
-                  shrink={false}
-                  textSize={"1.1em"}
-                  placeholder={"Paste an image URL"}
-                  clear={true}
-                  inputSubmit={this.handleURL}
-                />
-
-                <div className="ml-2">
-                  <ButtonAdv
+              <div className="alternate-upload mx-0  p-3">
+                <div className={"url-input-wrapper mb-2 "}>
+                  <SLInput
                     display={true}
-                    pill={true}
-                    labelColor={"#6c757d"}
-                    fontSize={"1.1em"}
-                    icon={"clipboard"}
-                    iconColor={"#6c757d"}
-                    reveal={true}
-                    click={this.handleClipboardPaste}
+                    shrink={false}
+                    textSize={"1.1em"}
+                    placeholder={"Paste an image URL"}
+                    clear={true}
+                    inputSubmit={this.handleURL}
                   />
-                </div>
-              </div>
 
-              <input
-                ref={this.fileInput}
-                accept="image/*"
-                type="file"
-                hidden={true}
-                onChange={(e) => this.handleFile(this.fileInput.current.files)}
-              />
-              <ButtonAdv
-                display={true}
-                width={"100%"}
-                pill={true}
-                label={"Choose photo"}
-                labelColor={"#6c757d"}
-                fontSize={"1.1em"}
-                icon={"photo"}
-                iconColor={"#6c757d"}
-                click={() => this.fileInput.current.click()}
-              />
+                  <div className="ml-2">
+                    <ButtonAdv
+                      display={true}
+                      pill={true}
+                      labelColor={"#6c757d"}
+                      fontSize={"1.1em"}
+                      icon={"clipboard"}
+                      iconColor={"#6c757d"}
+                      reveal={true}
+                      click={this.handleClipboardPaste}
+                    />
+                  </div>
+                </div>
+
+                <input
+                  ref={this.fileInput}
+                  accept="image/*"
+                  type="file"
+                  hidden={true}
+                  onChange={(e) =>
+                    this.handleFile(this.fileInput.current.files)
+                  }
+                />
+                <ButtonAdv
+                  display={true}
+                  width={"100%"}
+                  pill={true}
+                  label={"Choose photo"}
+                  labelColor={"#6c757d"}
+                  fontSize={"1.1em"}
+                  icon={"photo"}
+                  iconColor={"#6c757d"}
+                  click={() => this.fileInput.current.click()}
+                />
+              </div>
             </div>
           </div>
         </Fade>
