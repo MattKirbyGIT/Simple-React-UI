@@ -12,6 +12,8 @@
     pointer-events: none;
     transition: all 200ms;
     max-width: 100%;
+    white-space: nowrap;
+
 }
 
 .SLInput-pre-closed{

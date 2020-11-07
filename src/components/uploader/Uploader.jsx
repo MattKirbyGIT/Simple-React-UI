@@ -44,6 +44,21 @@ class Uploader extends Component {
     this.setState({ tags: event });
   };
 
+  renderDisgardToast = () => {
+    var toast = (
+      <Toast
+        key={this.props.renderToast[1]}
+        text={"Disgard Post?"}
+        type={"danger"}
+        smallText={"Your post will not be saved"}
+        cancel={true}
+        timeout={20}
+        accept={() => this.props.toggle()}
+      />
+    );
+    this.props.renderToast[0](toast);
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -57,15 +72,13 @@ class Uploader extends Component {
                 maxWidth: this.state.imageUploader ? "450px" : "1000px",
               }}
             >
-              <h1 className="lead title mb-0">{'New Post'}</h1>
-              <p className="lead text-muted mb-1">
-              {this.state.imageUploader ? 'Upload an image to get started.' : 'Enter a title below.'}
-              </p>
+              
 
               <ImageUploader
                 display={this.state.imageUploader}
                 returnImage={(e) => this.handleImageInput(e)}
                 renderToast={this.props.renderToast}
+                disgard={this.renderDisgardToast}
               />
          
 
@@ -75,6 +88,7 @@ class Uploader extends Component {
                 title={this.handleTitleInput}
                 description={this.handleDescriptionInput}
                 tags={this.handleTagsInput}
+                discard={this.renderDisgardToast}
               />
             </div>
           </div>

@@ -71,6 +71,7 @@ class ButtonAdv extends Component {
             style={{
               display: this.props.display ? "block" : "none",
               width: this.props.width,
+              textAlign: "center"
             }}
           >
             <div

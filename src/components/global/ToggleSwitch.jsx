@@ -33,7 +33,7 @@ class ToggleSwitch extends Component {
             className="TS-Label lead text-muted mr-2"
             style={{
               textAlign: "left",
-              position: this.props.label ? "relative" : "absolute",
+              position: "relative",
             }}
           >
             {this.props.label}

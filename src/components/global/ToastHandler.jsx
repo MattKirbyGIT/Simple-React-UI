@@ -30,11 +30,8 @@ class ToastHandler extends Component {
   componentDidUpdate() {
     if (this.props.toast != this.state.toasts[this.state.toasts.length - 1]) {
       this.setState({ toasts: [...this.state.toasts, this.props.toast] });
-  
     }
   }
-
-
 
   render() {
     return (

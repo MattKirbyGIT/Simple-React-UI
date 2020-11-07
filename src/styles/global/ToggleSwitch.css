@@ -15,6 +15,7 @@
 
 .TS-Box {
   display: flex;
+  float: right;
   pointer-events: all;
   align-items: center;
 }

@@ -59,7 +59,7 @@ class MLInput extends Component {
 
   render() {
     return (
-      <div className={"p-4"} style={{ textAlign: "right" }}>
+      <div className={""} style={{ textAlign: "right" }}>
         <div
           className="MLI-box lead rounded-lg"
           style={{
